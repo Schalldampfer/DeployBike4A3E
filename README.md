@@ -31,20 +31,20 @@ epoch_config\Configs\CfgActionMenu\CfgActionMenu_self.hpp (at bottom)
 
 class Deploy_deploy
 {
-    condition = "!dyna_inVehicle";
-    action = "Deploy_SpawnVehicle = [player,'MBK_01_EPOCH']; publicVariableServer 'Deploy_SpawnVehicle';";
-    icon = "x\addons\a3_epoch_code\Data\UI\buttons\repair.paa";
-    tooltip = "Deploy Bike";
+	condition = "!dyna_inVehicle";
+	action = "Deploy_SpawnVehicle = [player,'MBK_01_EPOCH']; publicVariableServer 'Deploy_SpawnVehicle';";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\repair.paa";
+	tooltip = "Deploy Bike";
 };
 
 epoch_config\Configs\CfgActionMenu\CfgActionMenu_target.hpp (at bottom)
 
 class Deploy_pack
 {
-    action = "Deploy_PackVehicle = [player,dyna_cursorTarget]; publicVariableServer 'Deploy_PackVehicle';";
-    icon = "x\addons\a3_epoch_code\Data\UI\buttons\repair.paa";
-    tooltip = "Pack Vehicle";
 	condition = "(dyna_cursorTarget iskindof 'MBK_01_EPOCH') && ((crew dyna_cursorTarget) isEqualTo [])";
+	action = "Deploy_PackVehicle = [player,dyna_cursorTarget]; publicVariableServer 'Deploy_PackVehicle';";
+	icon = "x\addons\a3_epoch_code\Data\UI\buttons\repair.paa";
+	tooltip = "Pack Vehicle";
 };
 
 BE filter:
