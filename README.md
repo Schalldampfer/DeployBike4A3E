@@ -41,10 +41,10 @@ epoch_config\Configs\CfgActionMenu\CfgActionMenu_target.hpp (at bottom)
 
 class Deploy_pack
 {
-    condition = "dyna_isVehicle && ((crew dyna_cursorTarget) isEqualTo [])";
     action = "Deploy_PackVehicle = [player,dyna_cursorTarget]; publicVariableServer 'Deploy_PackVehicle';";
     icon = "x\addons\a3_epoch_code\Data\UI\buttons\repair.paa";
     tooltip = "Pack Vehicle";
+	condition = "(dyna_cursorTarget iskindof 'MBK_01_EPOCH') && ((crew dyna_cursorTarget) isEqualTo [])";
 };
 
 BE filter:
