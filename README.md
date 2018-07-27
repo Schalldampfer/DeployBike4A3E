@@ -47,3 +47,6 @@ class Deploy_pack
     tooltip = "Pack Vehicle";
 };
 
+BE filter:
+in the end of the 1st line of publicvariable.txt :
+ !="Deploy_SpawnVehicle" !="Deploy_PackVehicle"
