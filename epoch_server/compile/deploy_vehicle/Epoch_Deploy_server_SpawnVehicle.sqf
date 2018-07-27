@@ -12,12 +12,11 @@ _vehClass = _this select 1;
 diag_log format["[DeployBike] Try spawning %1 by %2",_vehClass,_player];
 
 _isOk = true;
-if(isNil "Deploy_DeployedVehicles") then {Deploy_DeployedVehicles = [];};
+if(isNil "Deploy_DeployedPlayer") then {Deploy_DeployedPlayer = [];};
 
 //check player haven't spawned one
-{
-	if ((_x getVariable ["EPOCH_DeployOwner","-1"]) == _puid) then { _isOk = false;"You've already deployed a vehicle!" remoteExec ["Epoch_message",_player]; };
-} foreach Deploy_DeployedVehicles;
+if (_puid in Deploy_DeployedPlayer) exitWith { _isOk = false;"You've already deployed a vehicle!" remoteExec ["Epoch_message",_player]; };
+
 
 //spawn
 if (_isOk) then {
@@ -29,7 +28,7 @@ if (_isOk) then {
 	_vehObj setVelocity [0,0,.1];
 	_vehObj call EPOCH_server_setVToken;
 	//_vehObj call EPOCH_server_vehicleInit;
-	Deploy_DeployedVehicles set [count Deploy_DeployedVehicles, _vehObj];//add to array
+	Deploy_DeployedPlayer pushBack _puid;//add to array
 	_vehObj setvariable ["EPOCH_DeployOwner",_puid];//set puid as owner
 	_vehObj addEventHandler ["GetIn", {"WARNING: This vehicle will be deleted at restart!" remoteExec ["Epoch_message",_this select 2];}];//warn when get in
 	
